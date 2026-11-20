@@ -1,0 +1,25 @@
+{
+  "name": "informatika8-online-test",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Informatika 8 — Online Test: образовательная платформа онлайн-тестирования по информатике (8 класс) на Cloudflare Pages, Workers и D1",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "cf:dev": "wrangler pages dev dist --d1=DB",
+    "db:migrate:local": "wrangler d1 execute informatika8-db --local --file=./migrations/0001_init.sql && wrangler d1 execute informatika8-db --local --file=./migrations/0002_seed_curriculum.sql",
+    "db:migrate:remote": "wrangler d1 execute informatika8-db --remote --file=./migrations/0001_init.sql && wrangler d1 execute informatika8-db --remote --file=./migrations/0002_seed_curriculum.sql",
+    "deploy": "npm run build && wrangler pages deploy dist"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.2",
+    "wrangler": "^3.78.0"
+  }
+}
